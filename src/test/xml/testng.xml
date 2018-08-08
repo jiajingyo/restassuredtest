@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!--<suite name="Suite" >-->
+
+<!--    <test name="testpractice" preserve-order="true">    &lt;!&ndash;是否有执行顺序&ndash;&gt;
+        <classes>
+            <class name="practice" >    &lt;!&ndash;测试套件可以包含一个或多个测试用例&ndash;&gt;
+                <methods>
+                    <include name="qwe" />     &lt;!&ndash;按顺序执行测试方法&ndash;&gt;
+                    <include name="abc" />
+                    <include name="asd" />
+                </methods>
+            </class>
+        </classes>
+    </test>-->
+
+
+<!--    <test name="testpractice">
+        <groups>            &lt;!&ndash;分组测试&ndash;&gt;
+            <run>
+                <include name="group1"></include>
+                <include name="group2"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="practice">     &lt;!&ndash;执行来自哪个类的内容&ndash;&gt;
+               <methods>
+                   <include name="asd" />
+                   <include name="try" />
+               </methods>
+            </class>
+        </classes>
+    </test>-->
+
+
+<!--    &lt;!&ndash;参数化&ndash;&gt;
+    <parameter name="username" value="xman" />
+    <test name="testpractice">
+        <classes>
+            <class name="practice" >
+            </class>
+        </classes>
+    </test>-->
+
+
+<!--可以同时开启多条线程进行测试任务-->
+<!--<suite name="Suite"  parallel="classes" thread-count="2">  &lt;!&ndash;在类中执行多线程，开启两个线程&ndash;&gt;-->
+<suite name="Suite"  parallel="methods" thread-count="2">  <!--在方法中执行多线程，开启两个线程-->
+    <test name="testpractice">
+        <classes>
+            <!--<class name="testngTestDemo" >-->
+            <!--</class>-->
+            <class name="practice" >
+            </class>
+        </classes>
+    </test>
+</suite>
+
+        <!--</suite>-->
+
+

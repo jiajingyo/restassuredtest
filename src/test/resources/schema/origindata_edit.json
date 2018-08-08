@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",     /*schema的版本*/
+  "title":"topics",
+  "type":"object",    /*类型*/
+  "properties":{      /*属性*/
+    "topics":{
+      "type":"array",
+      "items":{       /*具体项*/
+        "type":"object",
+        "properties":{
+          "id":{"type":"integer"},
+          "title":{"type":"string"},
+          "closed_at":{"type":"null"},
+          "deleted":{"type":"boolean"},
+          "user":{
+            "type":"object",
+            "properties":{
+              "id":{"type":"integer"},
+              "abilities":{
+                "type":"object",
+                "properties":{
+                  "update":{"type":"boolean"},
+                  "destroy":{"type":"boolean"}
+                }
+              }
+            }
+          }
+        },
+        "required":["id","title"]
+      }
+    }
+  },
+  "required":["topics"]
+}

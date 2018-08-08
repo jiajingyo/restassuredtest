@@ -1,0 +1,26 @@
+package com.test;
+
+        import org.testng.Assert;
+        import org.testng.annotations.*;
+
+        public class TestNG1 {
+        @BeforeClass
+        public void beforeclass() {
+        System.out.println("Beforeclass's TestNG1");
+        }
+
+        @AfterClass
+        public void afterclass() {
+        System.out.println("Afterclass's TestNG1");
+        }
+
+        @Test
+        public void test3() {
+        System.out.println("TestNG1's test3");
+        }
+
+        @Test(groups="haha")
+        public void test4() {
+        System.out.println("TestNG1's test4");
+        }
+        }
