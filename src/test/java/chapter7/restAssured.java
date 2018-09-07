@@ -3,9 +3,16 @@ package chapter7;
 import io.restassured.RestAssured;
 import io.restassured.config.SessionConfig;
 import io.restassured.filter.session.SessionFilter;
+import io.restassured.response.Response;
+
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.useRelaxedHTTPSValidation;
 
@@ -38,30 +45,35 @@ public class restAssured {
 
     @Test
     public void GetFunction() throws Exception {
-/*//        get请求 方法一 直接请求url 打印返回的response
-        get("https://testerhome.com/api/v3/topics.json?limit=1&offset=0&type=last_actived")*//*.prettyPeek()*//*;*/
+//        get请求 方法一 直接请求url 打印返回的response
+        get("https://testerhome.com/api/v3/topics.json?limit=1&offset=0&type=last_actived").prettyPeek();
 
-/*
 //        get请求 方法二 拆开请求参数 返回的是response
         Response response = given().param("limit",1).and().param("offset",0)
                 .and().param("type","last_actived")
                 .get("https://testerhome.com/api/v3/topics.json");
 
         Assert.assertEquals(200,response.statusCode(),"return 200");
-*/
 
-/*
 //        get请求 方法三 new个对象传参 返回的是response
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("limit", 1);
         parameters.put("offset", 0);
         parameters.put("type", "last_actived");
 
-//        int statuscode = given().params(parameters)
-//                .get("https://testerhome.com/api/v3/topics.json").getStatusCode();
-
         given().params(parameters).get("https://testerhome.com/api/v3/topics.json");
-*/
+
+//        get请求 方法四 放到形参中请求
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("topics", "topics");
+        map.put("topicid", 12192);
+
+        get("https://testerhome.com/{topics}/{topicid}", map).prettyPeek();
+
+//        get请求 方法五 直接请求
+        get("https://testerhome.com/{topics}/{topicid}", "topics", "12192").prettyPeek();
+
+
     }
 
 
@@ -312,7 +324,7 @@ public class restAssured {
 
     @Test
     public void SesstionJenkinsLogin(){
-        RestAssured.config = RestAssured.config().sessionConfig(
+/*        RestAssured.config = RestAssured.config().sessionConfig(
                 new SessionConfig().sessionIdName("JSESSIONID.55cd899b")
         );
         SessionFilter sessionFilter = new SessionFilter();
@@ -332,7 +344,7 @@ public class restAssured {
         .when()
                 .get("http://localhost:8080/newJob").prettyPeek()
         .then()
-                .statusCode(200);
+                .statusCode(200);*/
     }
 
     @Test

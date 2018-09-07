@@ -1,4 +1,4 @@
-package junitdemo;
+package chapter7.junitdemo;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

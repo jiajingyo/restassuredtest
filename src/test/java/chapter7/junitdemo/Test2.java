@@ -1,4 +1,4 @@
-package junitdemo;
+package chapter7.junitdemo;
 
 import org.junit.*;
 
